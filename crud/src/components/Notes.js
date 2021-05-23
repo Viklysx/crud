@@ -13,15 +13,12 @@ class Notes extends React.Component {
     }
 
     updateNotes = () => {
-        fetch('http://localhost:7777/notes', {
-            method:"GET"
-        })
+        fetch('http://localhost:7777/notes')
         .then(response => response.json())
         .then(notes => this.setState({ notes: notes }));
     }
 
     deleteNote = (id) => {
-        console.log(id)
         fetch(`http://localhost:7777/notes/${id}`, {
             method: 'DELETE'
         })
@@ -32,18 +29,19 @@ class Notes extends React.Component {
 
     handleSubmit = (evt) => {
         evt.preventDefault(); 
-
+        const obj = {
+            id: this.state.notes ? this.state.notes.length : 0,
+            content: this.state.valueNote,
+        };
         fetch('http://localhost:7777/notes', {
             method: 'POST',
-            body: JSON.stringify({
-                id: this.state.notes ? this.state.notes.length : 0,
-                content: this.state.valueNote,
-            })
-            
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(obj)          
         })
         .then(() => {
             this.updateNotes();
-            console.log(this.state)
         })
         .then(() => {
             this.setState({ valueNote: '' });
@@ -60,12 +58,12 @@ class Notes extends React.Component {
 
     render() {
         return (
-            <div>
-                <div>
+            <div className="notes-wrapper">
+                <div className="notes-wrapper-top">
                     <h1>Notes</h1>
-                    <button onClick={this.updateNotes}>&#8634;</button>
+                    <button className="update-btn" onClick={this.updateNotes}>&#8634;</button>
                 </div>
-                <div>
+                <div className="notes-wrapper-body">
                 {this.state.notes.map((note) =>
                     <NoteElement {...note}
                         key={nanoid()}
@@ -73,10 +71,10 @@ class Notes extends React.Component {
                     />
                 )}
                 </div>
-                <div>
+                <div className="update-wrapper">
                     <form onSubmit={this.handleSubmit}>
                         <textarea placeholder="New note" value={this.state.valueNote} onChange={this.handleChange}/>
-                        <button type="submit">&#10004;</button>
+                        <button className="btn-add" type="submit">&#10004;</button>
                     </form>
                 </div>
             </div>

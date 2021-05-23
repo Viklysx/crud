@@ -36,3 +36,96 @@
     transform: rotate(360deg);
   }
 }
+
+.notes-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.update-btn {
+  width: 50px;
+  height: 50px;
+  background: white;
+  border-radius: 50px;
+  color: #09a719;
+  font-size: x-large;
+  border: none;
+  box-shadow: 0px 0px 6px 0px rgba(80, 186, 118, 0.9);
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.update-btn:hover {
+  transform: rotate(360deg);
+}
+
+.notes-wrapper-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 15%;
+}
+
+textarea {
+  border: none;
+  box-shadow: 0px 0px 6px 0px rgba(80, 186, 118, 0.9);
+  color: #808080;
+  padding: 10px;
+  font-size: x-large;
+  padding: 10;
+  outline: none;
+  width: 500px;
+  height: 100px;
+  resize: none;
+}
+
+.btn-add {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  font-size: x-large;
+  border: none;
+  background: #ffe32b;
+  color: #282c34;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  align-items: flex-end;
+}
+
+.note {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+  margin-bottom: 30px;
+
+}
+
+.note button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  font-size: x-large;
+  border: none;
+  background: #f75151;
+  color: #282c34;
+  cursor: pointer;
+  margin-right: 10px;  
+}
+
+.note p {
+  color: #808080;
+  font-size: x-large;
+  max-width: 80%;
+}
+
+.notes-wrapper-body {
+  display: flex;
+  flex-wrap: wrap;  
+}
